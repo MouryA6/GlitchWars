@@ -1,13 +1,35 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/webp" href="/icon_converted.webp" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/webp" href="/icon_converted.webp" />
+    
+    <!-- Preload Pixel Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+
+    
     <title>Pixel Wars</title>
+
+    <!-- Meta Theme & SEO -->
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="A pixel-perfect retro landing experience powered by Tailwind + Vite + React." />
+    <meta property="og:title" content="Pixel Wars" />
+    <meta property="og:description" content="Experience the nostalgic world of pixel perfection." />
+    <meta property="og:image" content="/assets/preview.png" />
+    <meta property="og:type" content="website" />
   </head>
-  <body>
-    <div id="root"></div>
+
+  <body class="bg-black text-green-500 font-pixel transition-all duration-300 ease-in-out selection:bg-pink-500 selection:text-black">
+    <!-- Optional: Scanline overlay -->
+    <div class="absolute inset-0 bg-[url('/scanline.png')] opacity-10 pointer-events-none z-0"></div>
+
+    <div id="root" class="relative z-10"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
