@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🔧 Global Styles */
+:root {
+  font-family: 'Press Start 2P', cursive;
+  line-height: 1.6;
+  font-weight: 400;
+
+  color-scheme: dark;
+  color: #00ffcc;
+  background-color: #000000;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: none;
+  -moz-osx-font-smoothing: auto;
+}
+
+/* ✨ Basic Link Styling */
+a {
+  font-weight: 500;
+  color: #0ff;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+a:hover {
+  color: #ff00ff;
+}
+
+/* 🖤 Body Reset */
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #000;
+  color: #00ffcc;
+  font-family: 'Press Start 2P', cursive;
+  overflow-x: hidden;
+}
+
+/* 🎮 Headings */
+h1, h2, h3, h4 {
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.6);
+}
+
+/* 🕹️ Buttons */
+button {
+  border-radius: 0;
+  border: 4px dashed #ff00ff;
+  padding: 0.6em 1.4em;
+  font-size: 0.75rem;
+  font-family: 'Press Start 2P', cursive;
+  background-color: #000;
+  color: #0ff;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+button:hover {
+  background-color: #ff00ff;
+  color: #000;
+  border-color: #0ff;
+  box-shadow: 0 0 10px #ff00ff;
+}
+button:focus,
+button:focus-visible {
+  outline: none;
+  border-color: #fff700;
+  box-shadow: 0 0 8px #fff700;
+}
+
+/* 🌗 Optional Light Mode — not used by default */
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #222;
+    background-color: #f0f0f0;
+  }
+  a:hover {
+    color: #ff6600;
+  }
+  button {
+    background-color: #fff;
+    color: #000;
+    border-color: #999;
+  }
+}
