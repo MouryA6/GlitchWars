@@ -8,6 +8,7 @@ import { HeroSection } from './components/HeroSection';
 import { HeroSelectionComponent } from './components/HeroSelectionComponent';
 import { GameFeaturesSection } from './components/GameFeaturesSection';
 import { PixelLootSection } from './components/PixelLootSection';
+import { Game } from './components/Game';
 
 const router = createBrowserRouter([
   {
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
       {
         path: 'select-hero',
         element: <HeroSelectionComponent />,
+      },
+      {
+        path: 'game',
+        element: <Game />,
       },
     ],
   },
