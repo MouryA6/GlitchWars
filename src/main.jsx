@@ -1,10 +1,39 @@
+// src/main.jsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.css';
-import App from './App.jsx';
+import { MainLayout } from './components/MainLayout';
+import { HeroSection } from './components/HeroSection';
+import { HeroSelectionComponent } from './components/HeroSelectionComponent';
+import { GameFeaturesSection } from './components/GameFeaturesSection';
+import { PixelLootSection } from './components/PixelLootSection';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <MainLayout />,
+    children: [
+      {
+        index: true,
+        element: (
+          <>
+            <HeroSection />
+            <GameFeaturesSection />
+            <PixelLootSection />
+          </>
+        ),
+      },
+      {
+        path: 'select-hero',
+        element: <HeroSelectionComponent />,
+      },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
