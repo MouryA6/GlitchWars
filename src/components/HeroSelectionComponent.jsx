@@ -1,18 +1,32 @@
 // src/components/HeroSelectionComponent.jsx
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 export function HeroSelectionComponent() {
   const navigate = useNavigate();
+  const [selectedHero, setSelectedHero] = useState(null);
 
   const heroes = [
-    { name: 'Pixel Knight', image: '/assets/swordsman.png' },
-    { name: 'Retro Mage', image: '/assets/wizard.png' },
-    { name: 'Archer', image: '/assets/archer.png' },
-    // Add more heroes as needed
+    { id: 'knight', name: 'Pixel Knight', image: '/assets/swordsman.png', type: 'Warrior' },
+    { id: 'mage', name: 'Retro Mage', image: '/assets/wizard.png', type: 'Wizard' },
+    { id: 'archer', name: 'Archer', image: '/assets/archer.png', type: 'Ranger' },
+    { id: 'spearman', name: 'Spearman', image: '/assets/spearman.png', type: 'Warrior' },
   ];
 
+  const selectHero = (hero) => {
+    setSelectedHero(hero);
+  };
+
+  const startGame = () => {
+    if (selectedHero) {
+      // We can pass the selected hero information to the game page
+      // via state in the navigation
+      navigate('/game', { state: { hero: selectedHero } });
+    }
+  };
+
   return (
-    <section className="text-center py-20">
+    <section className="text-center py-10">
       {/* 🔙 Back Button */}
       <div className="mb-8">
         <button
@@ -23,15 +37,40 @@ export function HeroSelectionComponent() {
         </button>
       </div>
 
-      <h2 className="text-3xl mb-6">Select Your Hero</h2>
-      <div className="flex justify-center flex-wrap gap-8">
+      <h2 className="text-3xl mb-6 text-pink-500">Select Your Hero</h2>
+      <div className="flex justify-center flex-wrap gap-8 mb-10">
         {heroes.map((hero) => (
-          <div key={hero.name} className="w-48">
-            <img src={hero.image} alt={hero.name} className="mb-2" />
-            <p>{hero.name}</p>
+          <div 
+            key={hero.id} 
+            className={`w-48 cursor-pointer transition-all duration-300 p-4 rounded-lg ${
+              selectedHero?.id === hero.id 
+                ? 'bg-pink-900/50 scale-110 shadow-[0_0_15px_rgba(255,0,255,0.5)]' 
+                : 'hover:bg-zinc-900/50'
+            }`}
+            onClick={() => selectHero(hero)}
+          >
+            <img 
+              src={hero.image} 
+              alt={hero.name} 
+              className="mb-2 w-32 h-32 object-contain mx-auto"
+            />
+            <p className="text-green-400 font-bold">{hero.name}</p>
+            <p className="text-cyan-300 text-xs">{hero.type}</p>
           </div>
         ))}
       </div>
+
+      <button
+        onClick={startGame}
+        disabled={!selectedHero}
+        className={`px-8 py-4 font-pixel text-lg bg-pink-600 text-white rounded-md transition-all duration-300 ${
+          selectedHero 
+            ? 'hover:bg-pink-500 hover:scale-110 hover:shadow-[0_0_20px_rgba(255,0,255,0.8)]' 
+            : 'opacity-50 cursor-not-allowed'
+        }`}
+      >
+        {selectedHero ? `PLAY AS ${selectedHero.name.toUpperCase()}` : 'SELECT A HERO TO CONTINUE'}
+      </button>
     </section>
   );
 }
