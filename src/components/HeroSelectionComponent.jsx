@@ -7,11 +7,17 @@ export function HeroSelectionComponent() {
   const [selectedHero, setSelectedHero] = useState(null);
 
   const heroes = [
-    { id: 'knight', name: 'Pixel Knight', image: '/assets/swordsman.png', type: 'Warrior' },
-    { id: 'mage', name: 'Retro Mage', image: '/assets/wizard.png', type: 'Wizard' },
-    { id: 'archer', name: 'Archer', image: '/assets/archer.png', type: 'Ranger' },
-    { id: 'spearman', name: 'Spearman', image: '/assets/spearman.png', type: 'Warrior' },
-  ];
+  { id: 'knight', name: 'Pixel Knight', image: '/assets/swordsman.png', type: 'Warrior' },
+  { id: 'mage', name: 'Retro Mage', image: '/assets/wizard.png', type: 'Wizard' },
+  { id: 'archer', name: 'Archer', image: '/assets/archer.png', type: 'Ranger' },
+];
+
+  // Only show heroes that have images
+  const availableHeroes = heroes.filter(hero => {
+    const img = new Image();
+    img.src = hero.image;
+    return img.complete;
+  });
 
   const selectHero = (hero) => {
     setSelectedHero(hero);
